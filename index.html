@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors</title>
+</head>
+
+<script>
+
+function computerPlay() {
+    let values = ["rock", "paper", "scissors"];// Declare array of values
+    let playResult = values[Math.floor(Math.random() * values.length)];// set playResult to a random value from the array
+    return playResult;// Returns playResult as the result of the function
+}
+
+
+
+function playRound(playerSelection, computerSelection) {
+    /*
+    console.log("Your play: ",playerSelection);// Prints user input into console
+    console.log("Computer's play: ",computerSelection);// Prints computer input into console
+   */
+    console.log(" ");
+    console.log("New round 'Ding ding'");
+    let gameResult;// Declare gameResult variable
+
+
+    playerSelection = prompt("Rock, paper or scissors?").toLowerCase();// Set a variable off user's input
+    computerSelection = computerPlay();// Pulls variable data from ComputerPlay
+
+    if (playerSelection === "rock" && computerSelection === "rock") {// Rock vs Rock
+        gameResult = "Rock against Rock, nobody wins";
+    } else if (playerSelection === "rock" && computerSelection === "paper") {// Rock vs Paper
+        gameResult = "You lose, Paper beats Rock";
+        computerScore++;
+    } else if (playerSelection === "rock" && computerSelection === "scissors") {// Rock vs Scissors
+        gameResult = "You win, Rock beats Scissors";
+        playerScore++;
+    } else if (playerSelection === "paper" && computerSelection === "rock") {// Paper vs Rock
+        gameResult = "You win, Paper beats Rock";
+        playerScore++;
+    } else if (playerSelection === "paper" && computerSelection === "paper") {// Paper vs Paper
+        gameResult = "Paper against Paper, nobody wins";
+    } else if (playerSelection === "paper" && computerSelection === "scissors") {// Paper vs Scissors
+        gameResult = "You lose, Scissors beats Paper";
+        computerScore++;
+    } else if (playerSelection === "scissors" && computerSelection === "rock") {// Scissors vs Rock
+        gameResult = "You lose, Rock beats Scissors";
+        computerScore++;
+    } else if (playerSelection === "scissors" && computerSelection === "paper") {// Scissors vs Paper
+        gameResult = "You win, Scissors beats paper";
+        playerScore++;
+    } else if (playerSelection === "scissors" && computerSelection === "scissors") {// Scissors vs Scissors
+        gameResult = "Scissors against Scissors, nobody wins";
+    }
+    else {
+        gameResult = "Next time, please enter either rock, scissors or paper";
+        computerScore++;
+    }
+    console.log(gameResult);
+    console.log("Player score: ", playerScore)
+    console.log("Computer score: ", computerScore);
+    return gameResult, playerScore, computerScore;
+}
+
+let computerSelection = computerPlay();// Turns output from computerPlay function into variable
+let playerScore = 0;//Sets playerScore as integer
+let computerScore = 0;//Sets computerScore as integer
+
+function game() {
+    for (let count = 0; count < 5; count++) {
+        playRound();
+    }
+    console.log(" ");
+    console.log("The game has ended! The final scores are:");
+    console.log("You: ", playerScore);
+    console.log("Computer: ", computerScore);
+
+    if (playerScore > computerScore) {
+        console.log("CONGRATS - You won!");
+    } else {
+        console.log("You lost. Do better next time.")
+    }
+}
+
+game ()
+
+//console.log(playRound(playerSelection,computerSelection));
+
+</script>
+
+
+<body>
+    
+</body>
+</html>
